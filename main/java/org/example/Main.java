@@ -8,6 +8,7 @@ public class Main {
         for (String arg : args) {
             inputDataKeeper.addData(arg);
         }
+        System.out.println("Current working directory: " + System.getProperty("user.dir"));
         Launcher launcher = new Launcher();
         launcher.run();
     }

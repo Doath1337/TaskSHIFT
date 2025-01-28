@@ -10,8 +10,12 @@ import java.util.ArrayList;
 
 public class OptionsSupervisor {
     InputDataKeeper inputDataKeeper = new InputDataKeeper();
+
     public boolean checkOptions() throws ErrorHandler {
         ArrayList<String> args = (ArrayList<String>) inputDataKeeper.getData();
+        if(args.size()==1 && args.get(0).equals("exit")) {
+            System.exit(0);
+        }
         Options option = Options.getInstance();
         for (int i = 0; i < args.size(); i++) {
             switch (args.get(i)) {

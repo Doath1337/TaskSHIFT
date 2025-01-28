@@ -33,25 +33,41 @@ public class CustomFileWriter {
 
         // Запись данных в файлы
         if(!integerDataStore.getData().isEmpty()) {
-            writeToFile(outputPath + prefix + "integers.txt", integerDataStore.getData(), appendMode);
+            writeToFile(outputPath, prefix + "integers.txt", integerDataStore.getData(), appendMode);
         }
         if(!doubleDataStore.getData().isEmpty()) {
-            writeToFile(outputPath + prefix + "doubles.txt", doubleDataStore.getData(), appendMode);
+            writeToFile(outputPath, prefix + "doubles.txt", doubleDataStore.getData(), appendMode);
         }
         if(!stringDataStore.getData().isEmpty()) {
-            writeToFile(outputPath + prefix + "strings.txt", stringDataStore.getData(), appendMode);
+            writeToFile(outputPath, prefix + "strings.txt", stringDataStore.getData(), appendMode);
         }
 
 
     }
 
-    private <T> void writeToFile(String fileName, List<T> data, boolean append) throws ErrorHandler {
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName, append))) {
-            for (T item : data) {
-                writer.write(item.toString());
-                writer.newLine();
+    private <T> void writeToFile(String path, String fileName, List<T> data, boolean append) throws ErrorHandler {
+        try {
+            File file;
+            if(path != null && !path.isEmpty()) {
+                file = new File(path+"\\"+fileName);
             }
-            System.out.println((append ? "Дополнено" : "Записано") + " в файл: " + fileName);
+            else{
+                file = new File(fileName);
+            }
+            File parentDir = file.getParentFile();
+            if (parentDir != null && !parentDir.exists()) {
+                if (!parentDir.mkdirs()) {
+                    throw new IOException("Не удалось создать директорию: " + parentDir.getAbsolutePath());
+                }
+            }
+
+            try (BufferedWriter writer = new BufferedWriter(new FileWriter(file, append))) {
+                for (T item : data) {
+                    writer.write(item.toString());
+                    writer.newLine();
+                }
+                System.out.println((append ? "Дополнено" : "Записано") + " в файл: " + fileName);
+            }
         } catch (IOException e) {
             throw new ErrorHandler("Ошибка при записи в файл: " + fileName);
         }
