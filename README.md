@@ -1,6 +1,6 @@
 # TaskSHIFT
 
-#Описание 
+<h1>Описание</h1> 
 Эта утилита создана для того, чтобы разделить строки во входящих файлах по типам данных: строки, целые числа, вещественные числа. 
 
 
@@ -8,28 +8,35 @@
 Используемая версия Maven: Apache Maven 3.9.9
 
 В зависимости включены junit и lombok
+
 Полный список зависимостей:
-<dependencies>
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>3.8.1</version>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.projectlombok</groupId>
-      <artifactId>lombok</artifactId>
-      <version>1.18.36</version>
-      <scope>provided</scope>
-    </dependency>
-#Руководство пользователя 
+><dependencies>
+>    <dependency>
+>      <groupId>junit</groupId>
+>      <artifactId>junit</artifactId>
+>      <version>3.8.1</version>
+>      <scope>test</scope>
+>    </dependency>
+>    <dependency>
+>      <groupId>org.projectlombok</groupId>
+>      <artifactId>lombok</artifactId>
+>      <version>1.18.36</version>
+>      <scope>provided</scope>
+>    </dependency>
+<h1>Руководство пользователя</h1> 
+
 Программу можно запустить через start.bat, лежащий в папке program:
+
 В таком случае просто откройте .bat файл и введите команду, java -jar name.jar писать не нужно
+
 Есть и второй способ - через терминал:
+
 1. Откройте терминал и перейдите в папку где находится .jar файл.
+
 2. Напишите java -jar program.jar и после основной запрос.
+
 ВАЖНО!
-Если вы используете второй способ, то, если первый запрос оказался неверным, не нужно больше писать java -jar program.jar, пишите сразу основной запрос
+>Если вы используете второй способ, то, если первый запрос оказался неверным, не нужно больше писать java -jar program.jar, пишите сразу основной запрос
 
 Для работы программы в одной папке должны находится:
 1. TestTaskSHIFT.jar
@@ -51,6 +58,7 @@
 -f вывод в консоль полной статистики
 
 exit - завершение работы программы 
+
 Если при запуске start.bat вы видите ошибку:
 
 ![Error](https://github.com/Doath1337/TestTaskSHIFT/blob/main/pics/photo_5280715604317296685_y.jpg)
